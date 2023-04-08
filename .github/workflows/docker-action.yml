@@ -30,6 +30,7 @@ jobs:
       - name: Post comment
         uses: actions/github-script@v4
         with:
+          github-token: ${{ secrets.DOCKER_TOKEN }}
           script: |
             const { data } = await github.issues.createComment({
               owner: context.repo.owner,
