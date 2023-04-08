@@ -33,23 +33,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           echo "${{ github.event.issue.body }}" > input.txt
-          output=$(python myscript.py "$(cat input.txt)")
-          echo "::set-output name=output::$output"
-        id: python
-      - name: Post comment
-        uses: actions/github-script@v4
-        with:
-          github-token: ${{ secrets.DOCKER_TOKEN }}
-          script: |
-            const { data } = await github.issues.createComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: context.issue.number,
-              body: '${{ steps.python.outputs.output }}'
-            });
-      - name: Debug
-        run: |
-          echo "GitHub event:"
-          echo "${{ toJson(github.event) }}"
-          echo "GitHub context:"
-          echo "${{ toJson(github.context) }}"
+          new_branch_name=$(python myscript.py "$(cat input.txt)")
+          git push -u origin $new_branch_name
+          gh pr create --title "Added new file to branch" --body "Please review and merge this pull request" --head $new_branch_name --base main
