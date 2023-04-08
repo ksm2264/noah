@@ -1,4 +1,4 @@
-name: Docker Action
+name: Python Action
 
 on:
   issues:
@@ -9,25 +9,29 @@ on:
     types: [created]
 
 jobs:
-  build:
+  run-python:
     runs-on: ubuntu-latest
     if: startsWith(github.event.issue.labels.*.name, 'hey-noah')
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-    - name: Build Docker image
-      run: docker build . --tag my-docker-image
-    - name: Run Docker container
-      run: docker run my-docker-image ${{ github.event.issue.body }}
-      env:
-        GITHUB_TOKEN: ${{ secrets.DOCKER_TOKEN }}
-    - name: Post comment
-      uses: actions/github-script@v4
-      with:
-        script: |
-          const { data } = await github.issues.createComment({
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            issue_number: context.issue.number,
-            body: 'Hello from the Docker container!'
-          });
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Install Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+      - name: Run Python script
+        run: |
+          echo "${{ github.event.issue.body }}" > input.txt
+          output=$(python myscript.py "$(cat input.txt)")
+          echo "::set-output name=output::$output"
+        id: python
+      - name: Post comment
+        uses: actions/github-script@v4
+        with:
+          script: |
+            const { data } = await github.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: '${{ steps.python.outputs.output }}'
+            });
