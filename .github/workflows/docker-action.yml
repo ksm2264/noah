@@ -35,3 +35,9 @@ jobs:
               issue_number: context.issue.number,
               body: '${{ steps.python.outputs.output }}'
             });
+      - name: Debug
+        run: |
+          echo "GitHub event:"
+          echo "${{ toJson(github.event) }}"
+          echo "GitHub context:"
+          echo "${{ toJson(github.context) }}"
