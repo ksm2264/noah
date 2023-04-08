@@ -22,6 +22,8 @@ jobs:
         with:
           python-version: '3.9'
       - name: Run Python script
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           echo "${{ github.event.issue.body }}" > input.txt
           output=$(python myscript.py "$(cat input.txt)")
