@@ -11,7 +11,9 @@ on:
 jobs:
   run-python:
     runs-on: ubuntu-latest
-    if: startsWith(github.event.issue.labels.*.name, 'hey-noah')
+    if: |
+      (github.event_name == 'issues' && contains(github.event.issue.labels.*.name, 'hey-noah')) ||
+      (github.event_name == 'issue_comment' && contains(github.event.comment.issue.labels.*.name, 'hey-noah'))
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
