@@ -23,14 +23,14 @@ jobs:
           python-version: '3.9'
       - name: Configure Git
         env:
-          GITHUB_TOKEN: ${{ secrets.DOCKER_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config --global user.email "${{ github.actor }}@users.noreply.github.com"
           git config --global user.name "${{ github.actor }}"
           git config --global credential.helper store
       - name: Run Python script
         env:
-          GH_TOKEN: ${{ github.token }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           echo "${{ github.event.issue.body }}" > input.txt
           output=$(python myscript.py "$(cat input.txt)")
