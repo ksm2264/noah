@@ -21,3 +21,13 @@ jobs:
       run: docker run my-docker-image ${{ github.event.issue.body }}
       env:
         GITHUB_TOKEN: ${{ secrets.DOCKER_TOKEN }}
+    - name: Post comment
+      uses: actions/github-script@v4
+      with:
+        script: |
+          const { data } = await github.issues.createComment({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            issue_number: context.issue.number,
+            body: 'Hello from the Docker container!'
+          });
