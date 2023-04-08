@@ -1,0 +1,23 @@
+name: Docker Action
+
+on:
+  issues:
+    types: [opened]
+    tags:
+      - hey-noah
+  issue_comment:
+    types: [created]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: startsWith(github.event.issue.labels.*.name, 'hey-noah')
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Build Docker image
+      run: docker build . --tag my-docker-image
+    - name: Run Docker container
+      run: docker run my-docker-image ${{ github.event.issue.body }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.DOCKER_TOKEN }}
