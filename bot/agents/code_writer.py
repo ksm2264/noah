@@ -6,9 +6,8 @@ Created on Sat Apr  8 21:04:54 2023
 """
 
 import openai
-import json
 
-from cli import get_file_contents
+from ..cli import get_file_contents
 
 gpt_model = "gpt-3.5-turbo"
 

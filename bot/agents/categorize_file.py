@@ -1,5 +1,5 @@
 
-from cli import get_file_contents
+from ..cli import get_file_contents
 import openai
 import json
 

@@ -2,7 +2,7 @@ import os
 import subprocess
 import sys
 import uuid
-from bot.test import implement_feature
+from .test import implement_feature
 
 # Get the input argument from the command line
 input_str = sys.argv[1]

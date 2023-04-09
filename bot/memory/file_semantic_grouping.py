@@ -1,4 +1,4 @@
-from agents.categorize_file import get_categories
+from ..agents.categorize_file import get_categories
 
 class FileGrouping:
     def __init__(self, app_summary, all_files):
