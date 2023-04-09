@@ -3,7 +3,8 @@ from bot.memory.file_semantic_grouping import FileGrouping
 from bot.cli import list_files_matching_pattern, replace_file_with_content
 import os
 import openai
-from bot.agents.find_target_groups import find_groups
+# from bot.agents.find_target_groups import find_groups
+from bot.agents.find_target_files import find_target_files
 from bot.agents.code_writer import write_code
 
 import logging
@@ -25,23 +26,22 @@ def implement_feature(feature_request):
 
     file_list = list_files_matching_pattern('.py', 'src/')
 
-    store = FileGrouping(idea, file_list)
-    store.build_store()
+    # store = FileGrouping(idea, file_list)
+    # store.build_store()
 
-    category_lookup = store.store
+    # category_lookup = store.store
 
-    categories = list(category_lookup.keys())
+    # categories = list(category_lookup.keys())
 
-    targets = find_groups(idea, categories, feature_request)
+    target_files = find_target_files(idea, file_list, feature_request)
 
-    logging.info(f'Target category: {targets}')
+    # logging.info(f'Target category: {targets}')
 
-    target_files = []
-    for target in targets:
-        target_files+=store.store[target]
+    # target_files = []
+    # for target in targets:
+    #     target_files+=store.store[target]
         
     logging.info(f'Target files: {target_files}')
-
 
     code_dict = write_code(feature_request, target_files)
 
