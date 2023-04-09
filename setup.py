@@ -6,6 +6,5 @@ setup(
     packages=find_packages(),
     install_requires=[
         "openai",
-        # add any other dependencies here
     ],
 )
