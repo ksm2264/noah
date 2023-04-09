@@ -64,7 +64,7 @@ def find_target_files(app_summary, file_list, feature_request):
         raw_text = raw_text.strip('.').lower()
         logging.info(f'result: {raw_text}')
 
-        if raw_text=='yes':
+        if 'yes' in raw_text:
             target_file_names.append(file_name)
         else:
             pass
