@@ -31,6 +31,8 @@ def implement_feature(feature_request):
 
     targets = find_groups(idea, categories, feature_request)
 
+    print(targets)
+    
     target_files = []
     for target in targets:
         target_files+=store.store[target]
