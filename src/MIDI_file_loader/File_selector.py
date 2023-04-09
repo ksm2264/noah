@@ -2,6 +2,7 @@
 import tkinter as tk
 from tkinter import filedialog
 import urllib.request 
+import os
 
 class FileSelector:
     @staticmethod
@@ -21,3 +22,5 @@ class FileSelector:
         with open(file_path, 'wb') as f:
             f.write(remote_file.read())
         return file_path
+
+

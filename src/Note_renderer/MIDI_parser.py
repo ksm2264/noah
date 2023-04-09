@@ -1,6 +1,8 @@
 
 import mido
+from functools import lru_cache
 
+@lru_cache(maxsize=32)
 def parse_midi(file_path):
     """
     Given the path to a MIDI file, extract its track data and return it as a dictionary.
@@ -20,7 +22,8 @@ def parse_midi(file_path):
                 note_number = msg.note
                 velocity = msg.velocity
                 notes_on[note_number] = velocity
-                track_notes.append((current_time, note_number, velocity, None))
+                duration = None
+                track_notes.append((current_time, note_number, velocity, duration))
             elif msg.type == 'note_off':
                 note_number = msg.note
                 if note_number in notes_on:
@@ -32,3 +35,5 @@ def parse_midi(file_path):
         track_data[track_name] = track_notes
 
     return track_data
+
+

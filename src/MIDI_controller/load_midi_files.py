@@ -1,6 +1,9 @@
 
 # Define the MIDI_controller module
 class MIDI_controller:
+    def __init__(self):
+        self.loaded_files = []
+
     # Define the load_midi_files sub-component
     def load_midi_files(self):
         # Function that loads the desired piano MIDI file to be played as the user's input.
@@ -21,3 +24,5 @@ class MIDI_controller:
                 
         # return the functions in a list of dictionaries as requested
         return [{'select_piano_track': select_piano_track}, {'load_piano_track': load_piano_track}]
+
+    
