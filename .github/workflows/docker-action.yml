@@ -39,7 +39,6 @@ jobs:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY}}
         run: |
           python -m pip install --upgrade pip
-          echo "${{ github.event.issue.body }}" > input.txt
-          new_branch_name=$(python bot/main.py "$(cat input.txt)")
+          new_branch_name=$(python bot/main.py "${{ github.event.issue.body }}")
           git push -u origin "$new_branch_name"
           gh pr create --title "Added new file to branch" --body "Please review and merge this pull request" --head $new_branch_name --base main
