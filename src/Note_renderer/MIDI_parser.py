@@ -31,4 +31,21 @@ def parse_midi(file_path):
         track_name = track.name if track.name else f"Track {track.number}"
         track_data[track_name] = track_notes
 
+    #new file with modifications           
+    with open(file_path, 'rb') as f:
+        contents = f.read()
+
+    note_count = {}
+    for msg in mido.MidiFile(file_path):
+        if msg.type not in ['note_on', 'note_off']:
+            continue
+        if msg.note not in note_count:
+            note_count[msg.note] = 1
+        else:
+            note_count[msg.note] += 1
+
+    #print note count
+    print(note_count)
+
     return track_data
+

@@ -21,3 +21,4 @@ class MIDI_controller:
                 
         # return the functions in a list of dictionaries as requested
         return [{'select_piano_track': select_piano_track}, {'load_piano_track': load_piano_track}]
+
