@@ -37,10 +37,3 @@ def get_categories(app_summary, existing_categories, file_name):
     categories = json.loads(raw_text)
             
     return categories
-
-def attempt_prompt(messages):
-    
-   
-
-
-    return success, categories
