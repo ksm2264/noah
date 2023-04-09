@@ -12,7 +12,8 @@ def get_categories(app_summary, existing_categories, file_name):
     list out which categories this file belongs to.
     use existing groups, and/or come up with new ones.
     these categories should be software domains. (e.g. controller, input_handler, etc)
-    respond only with JSON:'["category_1", "category_2"]'
+    respond only with a string where you separate categories using @@@ e.g.:
+    @@@category_1@@@category_2@@@category_3@@@
     '''
 
     file_content = get_file_contents(file_name)
@@ -34,6 +35,12 @@ def get_categories(app_summary, existing_categories, file_name):
     response_dict = response.to_dict()
     raw_text = response_dict['choices'][0]['message']['content']
 
-    categories = json.loads(raw_text)
+    split_txt = raw_text.split('@@@')
+
+    if split_txt[0]=='':
+        split_txt=split_txt[1:]
+
+    if split_txt[-1]=='':
+        split_txt = split_txt[:-1]
             
-    return categories
+    return split_txt
