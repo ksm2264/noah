@@ -27,7 +27,7 @@ def write_code(feature_description, files_to_change):
         files_dict[file] = get_file_contents(file)
 
     user_message = f'feature: {feature_description}, files to change: {files_dict}'
-    print(feature_description)
+    # print(feature_description)
     messages = [
         {"role":"system",
          "content":system_message},
@@ -42,8 +42,6 @@ def write_code(feature_description, files_to_change):
 
     response_dict = response.to_dict()
     raw_text = response_dict['choices'][0]['message']['content']
-
-    split_txt = raw_text.split('@@@')
 
     split_txt = raw_text.split('@@@')
 

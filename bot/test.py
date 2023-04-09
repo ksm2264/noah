@@ -18,11 +18,11 @@ and uses MIDI files to render scrolling notes onto an on screen keyboard.
 def implement_feature(feature_request):
 
     file_list = list_files_matching_pattern('.py', 'src/')
-    print(file_list)
+    # print(file_list)
     store = FileGrouping(idea, file_list)
     store.build_store()
 
-    print(store.store)
+    # print(store.store)
 
     category_lookup = store.store
 
@@ -30,7 +30,7 @@ def implement_feature(feature_request):
 
     targets = find_groups(idea, categories, feature_request)
 
-    print(targets)
+    # print(targets)
 
     target_files = []
     for target in targets:
@@ -39,7 +39,7 @@ def implement_feature(feature_request):
     code_dict = write_code(feature_request, target_files)
 
     for file, content in code_dict.items():
-        print(f'replacing file: {file} with content: {content}')
+        # print(f'replacing file: {file} with content: {content}')
         replace_file_with_content(file, content)
 
     return True

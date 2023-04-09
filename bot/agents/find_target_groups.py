@@ -22,7 +22,7 @@ def find_groups(app_summary, target_categories, feature_request):
     '''
 
     user_message = f'app_summary: {app_summary}, existing groups: {target_categories}, feature_request: {feature_request}'
-    print(feature_request)
+    # print(feature_request)
     messages = [
         {"role":"system",
          "content":system_message},

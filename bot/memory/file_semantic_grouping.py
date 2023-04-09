@@ -24,7 +24,7 @@ class FileGrouping:
     
         for idx, file in enumerate(self.all_files):
             
-            print(f'Processing {file}: {idx} of {len(self.all_files)}')
+            # print(f'Processing {file}: {idx} of {len(self.all_files)}')
             categories = get_categories(self.app_summary, self.categories(), file)
             
             self.upsert_store(categories, file)
