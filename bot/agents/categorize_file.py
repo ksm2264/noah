@@ -1,5 +1,6 @@
 
 from bot.cli import get_file_contents
+from bot.agents.clean_json import json_cleaner
 import openai
 import json
 
@@ -13,6 +14,7 @@ def get_categories(app_summary, existing_categories, file_name):
     use existing groups, and/or come up with new ones.
     these categories should be software domains. (e.g. controller, input_handler, etc)
     respond only with JSON:'["category_1", "category_2"]'
+    Please make sure you are only responding with that format, and that it is valid
     '''
 
     file_content = get_file_contents(file_name)
@@ -34,6 +36,9 @@ def get_categories(app_summary, existing_categories, file_name):
     response_dict = response.to_dict()
     raw_text = response_dict['choices'][0]['message']['content']
 
-    categories = json.loads(raw_text)
-            
+    try:
+        categories = json.loads(raw_text)
+    except:
+        categories = json_cleaner(raw_text)
+
     return categories

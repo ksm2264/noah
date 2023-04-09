@@ -29,7 +29,7 @@ def store_piano_track(file_path):
         print("File loaded successfully!")
         #Storing the file
         with open("piano_tracks.txt", 'a+') as f:
-            f.write(file_path + "\n")
+            f.write(file_path + "\\n")
         return True
     except pygame.midi.MidiException as ex:
         print("Error while loading file: ", ex)

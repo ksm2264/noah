@@ -8,6 +8,7 @@ Created on Sat Apr  8 20:50:05 2023
 import openai
 import json
 
+from bot.agents.clean_json import json_cleaner
 
 gpt_model = 'gpt-3.5-turbo'
 
@@ -37,7 +38,10 @@ def find_groups(app_summary, target_categories, feature_request):
     response_dict = response.to_dict()
     raw_text = response_dict['choices'][0]['message']['content']
 
-    categories = json.loads(raw_text)
-           
+    try:
+        categories = json.loads(raw_text)
+    except:
+        categories = json_cleaner(raw_text)
+
     return categories
     
