@@ -1,4 +1,3 @@
-
 #Importing necessary libraries
 import pygame.midi
 
@@ -35,5 +34,3 @@ def store_piano_track(file_path):
     except pygame.midi.MidiException as ex:
         print("Error while loading file: ", ex)
         return False
-
-
