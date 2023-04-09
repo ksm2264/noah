@@ -1,4 +1,9 @@
 from bot.agents.categorize_file import get_categories
+import logging
+import sys
+
+handler = logging.StreamHandler(sys.stderr)
+logging.basicConfig(level=logging.INFO, handlers=[handler])
 
 class FileGrouping:
     def __init__(self, app_summary, all_files):
@@ -24,7 +29,7 @@ class FileGrouping:
     
         for idx, file in enumerate(self.all_files):
             
-            # print(f'Processing {file}: {idx} of {len(self.all_files)}')
+            logging.info(f'Processing {file}: {idx} of {len(self.all_files)}')
             categories = get_categories(self.app_summary, self.categories(), file)
             
             self.upsert_store(categories, file)

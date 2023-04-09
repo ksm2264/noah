@@ -18,12 +18,7 @@ new_branch_name = str(uuid.uuid4())
 # Checkout a new branch
 subprocess.run(["git", "checkout", "-b", new_branch_name], stdout=subprocess.DEVNULL)
 
-sucess = False
-while not sucess:
-    try:
-        success = implement_feature(input_str)
-    except:
-        continue
+implement_feature(input_str)
 
 # Add the new file to the Git repository
 subprocess.run(["git", "add", "."], stdout=subprocess.DEVNULL)
