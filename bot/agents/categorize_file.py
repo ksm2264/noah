@@ -20,7 +20,7 @@ def get_categories(app_summary, existing_categories, file_name):
     file_content = get_file_contents(file_name)
 
     user_message = f'app_summary: {app_summary}, existing groups: {existing_categories}, file content: {file_content}'
-    print(existing_categories)
+    # print(existing_categories)
     messages = [
         {"role":"system",
          "content":system_message},
