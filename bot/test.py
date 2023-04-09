@@ -6,8 +6,6 @@ import openai
 from bot.agents.find_target_groups import find_groups
 from bot.agents.code_writer import write_code\
 
-load_dotenv()
-openai.api_key = os.getenv('OPENAI_API_KEY')
 
 idea = '''
 A rhythm game that uses a MIDI keyboard as a controller, 
@@ -19,7 +17,8 @@ and uses MIDI files to render scrolling notes onto an on screen keyboard.
 
 def implement_feature(feature_request):
 
-    file_list = list_files_matching_pattern('.py', '../src')
+    file_list = list_files_matching_pattern('.py', 'src/')
+    print(file_list)
     store = FileGrouping(idea, file_list)
     store.build_store()
 
@@ -32,7 +31,7 @@ def implement_feature(feature_request):
     targets = find_groups(idea, categories, feature_request)
 
     print(targets)
-    
+
     target_files = []
     for target in targets:
         target_files+=store.store[target]
@@ -41,4 +40,3 @@ def implement_feature(feature_request):
 
     for file, content in code_dict.items():
         replace_file_with_content(file, content)
-        

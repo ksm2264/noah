@@ -1,12 +1,21 @@
 
 import mido
+from src.MIDI_file_loader.File_selector import load_file
+from functools import cache
 
+@cache
 def parse_midi(file_path):
     """
     Given the path to a MIDI file, extract its track data and return it as a dictionary.
     The dictionary maps track names to a list of note events.
     Each note event is a tuple of (time, note_number, velocity, duration)
     """
+    # Check if the file was loaded through internet
+    if file_path.startswith('http'):
+        file_content = load_file(file_path)
+        with open(file_path, 'wb') as f:
+            f.write(file_content)
+    
     midi_file = mido.MidiFile(file_path)
     track_data = {}
 

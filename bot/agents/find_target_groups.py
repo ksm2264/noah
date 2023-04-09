@@ -15,9 +15,9 @@ def find_groups(app_summary, target_categories, feature_request):
     
     system_message = '''
     determine which categories of files should be changed to implement a feature request.
-    take into account the app summary.
-    respond only with a string where you format and separate categories like this:
-    @@@category_1@@@category_2@@@category_3@@@
+    format like this:
+    '["category_1", "category_2"]'
+    Please make sure you are only responding with that format, and that it is valid
     '''
 
     user_message = f'app_summary: {app_summary}, existing groups: {target_categories}, feature_request: {feature_request}'
@@ -37,13 +37,7 @@ def find_groups(app_summary, target_categories, feature_request):
     response_dict = response.to_dict()
     raw_text = response_dict['choices'][0]['message']['content']
 
-    split_txt = raw_text.split('@@@')
-
-    if split_txt[0]=='':
-        split_txt=split_txt[1:]
-
-    if split_txt[-1]=='':
-        split_txt = split_txt[:-1]
+    categories = json.loads(raw_text)
            
-    return split_txt
+    return categories
     
