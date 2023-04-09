@@ -41,7 +41,7 @@ def find_groups(app_summary, target_categories, feature_request):
     try:
         categories = json.loads(raw_text)
     except:
-        categories = json_cleaner(raw_text)
+        categories = json.loads(json_cleaner(raw_text))
 
     return categories
     

@@ -4,7 +4,13 @@ from bot.cli import list_files_matching_pattern, replace_file_with_content
 import os
 import openai
 from bot.agents.find_target_groups import find_groups
-from bot.agents.code_writer import write_code\
+from bot.agents.code_writer import write_code
+
+import logging
+import sys
+
+handler = logging.StreamHandler(sys.stderr)
+logging.basicConfig(level=logging.INFO, handlers=[handler])
 
 
 idea = '''
@@ -28,7 +34,7 @@ def implement_feature(feature_request):
 
     targets = find_groups(idea, categories, feature_request)
 
-    # print(targets)
+    logging.info(f'Targets: {targets}')
 
     target_files = []
     for target in targets:
@@ -37,7 +43,7 @@ def implement_feature(feature_request):
     code_dict = write_code(feature_request, target_files)
 
     for file, content in code_dict.items():
-        # print(f'replacing file: {file} with content: {content}')
+        logging.info(f'replacing file: {file} with content: {content}')
         replace_file_with_content(file, content)
 
     return True
