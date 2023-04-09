@@ -1,3 +1,4 @@
+
 from mido import MidiFile
 
 class MIDI_reader:
@@ -29,3 +30,4 @@ class MIDI_reader:
             'key_signature': mid.key_signature,
             'time_signature': mid.time_signature
         }
+

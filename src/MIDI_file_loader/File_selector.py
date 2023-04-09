@@ -8,9 +8,9 @@ class FileSelector:
     def select_file():
         root = tk.Tk()
         root.withdraw()
-        file_path = filedialog.askopenfilename(filetypes=[("MIDI Files", "*.mid *.midi")])
+        file_path = filedialog.askopenfilename(filetypes=[("MIDI Files", "*.mid *.midi"), ("All Files", "*.*")])
         return file_path
-
+    
     @staticmethod
     def load_remote_file(url):
         try:
@@ -21,3 +21,4 @@ class FileSelector:
         with open(file_path, 'wb') as f:
             f.write(remote_file.read())
         return file_path
+
