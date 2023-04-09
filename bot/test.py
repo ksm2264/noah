@@ -1,10 +1,10 @@
 from dotenv import load_dotenv
-from .memory.file_semantic_grouping import FileGrouping
-from .cli import list_files_matching_pattern, replace_file_with_content
+from bot.memory.file_semantic_grouping import FileGrouping
+from bot.cli import list_files_matching_pattern, replace_file_with_content
 import os
 import openai
-from .agents.find_target_groups import find_groups
-from .agents.code_writer import write_code\
+from bot.agents.find_target_groups import find_groups
+from bot.agents.code_writer import write_code\
 
 load_dotenv()
 openai.api_key = os.getenv('OPENAI_API_KEY')
