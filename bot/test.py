@@ -34,12 +34,15 @@ def implement_feature(feature_request):
 
     targets = find_groups(idea, categories, feature_request)
 
-    logging.info(f'Targets: {targets}')
+    logging.info(f'Target category: {targets}')
 
     target_files = []
     for target in targets:
         target_files+=store.store[target]
         
+    logging.info(f'Target files: {target_files}')
+
+
     code_dict = write_code(feature_request, target_files)
 
     for file, content in code_dict.items():
