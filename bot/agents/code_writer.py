@@ -14,9 +14,8 @@ gpt_model = "gpt-3.5-turbo"
 def write_code(feature_description, files_to_change):
 
     system_message = '''
-    Given a desired new feature, and files,
-    respond with the changed version of each of the files to implement the feature.
-    Respond by alternating file names and contents like so:
+    You are a programming expert, respond with new files to implement a feature.
+    In your response alternate file names and file content like this:
     @@@file_name1@@@file_content1@@@file_name2@@@file_content_2@@@ etc.
     Only respond with that format. Make sure to start and end with a @@@
     '''
@@ -26,7 +25,10 @@ def write_code(feature_description, files_to_change):
     for file in files_to_change:
         files_dict[file] = get_file_contents(file)
 
-    user_message = f'feature: {feature_description}, files to change: {files_dict}'
+    user_message = f'''Please implement this feature, responding
+    with the desired @@@ format as instructed. Please make sure to format the code correctly.
+    The feature is: {feature_description}, the files to change are: {files_dict}
+    '''
     # print(feature_description)
     messages = [
         {"role":"system",
