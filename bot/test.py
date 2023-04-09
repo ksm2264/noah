@@ -1,6 +1,6 @@
 from dotenv import load_dotenv
-from memory.file_semantic_grouping import FileGrouping
-from cli import list_files_matching_pattern, replace_file_with_content
+from .memory.file_semantic_grouping import FileGrouping
+from .cli import list_files_matching_pattern, replace_file_with_content
 import os
 import openai
 from .agents.find_target_groups import find_groups
