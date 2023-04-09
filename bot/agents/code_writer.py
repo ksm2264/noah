@@ -45,8 +45,13 @@ def write_code(feature_description, files_to_change):
 
     split_txt = raw_text.split('@@@')
 
-    if len(split_txt)%2 == 1:
-        split_txt = split_txt[1:]
+    split_txt = raw_text.split('@@@')
+
+    if split_txt[0]=='':
+        split_txt=split_txt[1:]
+
+    if split_txt[-1]=='':
+        split_txt = split_txt[:-1]
 
     changed_files = {}
     
