@@ -1,4 +1,3 @@
-
 import tkinter as tk
 from tkinter import filedialog
 import urllib.request 
@@ -10,7 +9,7 @@ class FileSelector:
         root.withdraw()
         file_path = filedialog.askopenfilename(filetypes=[("MIDI Files", "*.mid *.midi")])
         return file_path
-
+    
     @staticmethod
     def load_remote_file(url):
         try:

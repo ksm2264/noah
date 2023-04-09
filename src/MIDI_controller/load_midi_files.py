@@ -1,4 +1,3 @@
-
 # Define the MIDI_controller module
 class MIDI_controller:
     # Define the load_midi_files sub-component

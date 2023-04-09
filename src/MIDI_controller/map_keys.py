@@ -83,36 +83,4 @@ KEY_MAPPING = {
     94: [(14,3)],
     95: [(14,4)],
     96: [(15,0)],
-    97: [(15,1)],
-    98: [(15,2)],
-    99: [(15,3)],
-    100: [(15,4)],
-    101: [(16,0)],
-    102: [(16,1)],
-    103: [(16,2)],
-    104: [(16,3)],
-    105: [(16,4)],
-    106: [(17,0)],
-    107: [(17,1)],
-    108: [(17,2)],
-}
-
-def map_played_notes(note_box: Dict[list]) -> list:
-    """
-    Function takes a box of played notes as input and maps them to the corresponding keys on the on-screen keyboard.
-    
-    Arguments:
-    note_box - A dictionary with note number and status as key value pairs
-    
-    Returns:
-    A list of tuples, where each tuple contains the row and column of a key
-    """
-    
-    played_notes = [note for note, status in note_box.items() if status == "on"]
-    mapped_keys = []
-    
-    for note in played_notes:
-        if note in KEY_MAPPING:
-            mapped_keys.extend(KEY_MAPPING[note])
-            
-    return mapped_keys
+    97: [(15,1
