@@ -3,6 +3,7 @@ import mido
 from src.MIDI_file_loader.File_selector import load_file
 from functools import cache
 
+#Adding caching functionality
 @cache
 def parse_midi(file_path):
     """
@@ -41,3 +42,5 @@ def parse_midi(file_path):
         track_data[track_name] = track_notes
 
     return track_data
+
+

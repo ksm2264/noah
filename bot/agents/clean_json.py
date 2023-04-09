@@ -15,7 +15,7 @@ def json_cleaner(raw_txt):
             {"role":"system",
             "content":system_message},
             {"role":"user",
-            "content":f'please fix this JSON: {raw_txt}'}
+            "content":f'please fix this JSON: {raw_txt}. Do not respond with anything except the fixed JSON'}
         ]
 
     response = openai.ChatCompletion.create(

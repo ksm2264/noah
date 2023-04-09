@@ -39,5 +39,5 @@ def implement_feature(feature_request):
     code_dict = write_code(feature_request, target_files)
 
     for file, content in code_dict.items():
-        print(f'replacing file: {file}')
+        print(f'replacing file: {file} with content: {content}')
         replace_file_with_content(file, content)
