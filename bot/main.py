@@ -22,6 +22,6 @@ subprocess.run(["git", "add", new_file_path], stdout=subprocess.DEVNULL)
 
 # Commit the changes to the new branch
 subprocess.run(["git", "commit", "-m", "Added new file to branch"], stdout=subprocess.DEVNULL)
-
+ 
 # Output the new branch name
 sys.stdout.write(new_branch_name)

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Demon SVG</title>
+</head>
+<body>
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <!-- Head -->
+  <circle cx="50" cy="50" r="40" fill="red" />
+  
+  <!-- Eyes -->
+  <circle cx="35" cy="40" r="5" fill="white" />
+  <circle cx="65" cy="40" r="5" fill="white" />
+  <circle cx="35" cy="40" r="2" fill="black" />
+  <circle cx="65" cy="40" r="2" fill="black" />
+
+  <!-- Mouth -->
+  <path d="M30,65 Q50,80 70,65" stroke="black" stroke-width="2" fill="none" />
+  <path d="M30,65 Q50,75 70,65" stroke="black" stroke-width="2" fill="none" />
+  
+  <!-- Teeth -->
+  <polygon points="38,65 42,75 46,65" stroke="black" stroke-width="1" fill="white" />
+  <polygon points="48,65 52,75 56,65" stroke="black" stroke-width="1" fill="white" />
+  <polygon points="58,65 62,75 66,65" stroke="black" stroke-width="1" fill="white" />
+
+  <!-- Horns -->
+  <path d="M20,30 Q40,10 40,30" stroke="black" stroke-width="2" fill="none" />
+  <path d="M80,30 Q60,10 60,30" stroke="black" stroke-width="2" fill="none" />
+</svg>
+
+</body>
+</html>

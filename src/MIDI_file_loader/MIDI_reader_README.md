@@ -1,0 +1,3 @@
+The `MIDI_reader` class takes in a file path when it is initialized, which is then used for parsing the MIDI file. The `parse_file` function reads through the MIDI file and returns an array of dictionaries that contain information about each note in the form of its pitch, velocity, and timing information. The `get_metadata` function retrieves and returns metadata about the MIDI file such as tempo, key signature, and time signature.
+
+Note: This code requires the `mido` library to be installed.

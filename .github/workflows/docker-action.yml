@@ -33,6 +33,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           echo "${{ github.event.issue.body }}" > input.txt
-          new_branch_name=$(python myscript.py "$(cat input.txt)")
+          new_branch_name=$(python bot/main.py "$(cat input.txt)")
           git push -u origin "$new_branch_name"
           gh pr create --title "Added new file to branch" --body "Please review and merge this pull request" --head $new_branch_name --base main
