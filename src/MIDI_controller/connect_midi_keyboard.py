@@ -10,6 +10,6 @@ def connect_usb() -> mido.MidiDevice:
     """
     midi_devices = mido.get_input_names()
     for device in midi_devices:
-        if 'MIDI keyboard' in device: 
+        if 'MIDI keyboard' in device:
             return mido.open_input(device)
     raise Exception("MIDI keyboard not found, please connect and try again")

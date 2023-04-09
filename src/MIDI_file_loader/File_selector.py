@@ -1,14 +1,12 @@
-
-import tkinter as tk
-from tkinter import filedialog
-import urllib.request 
+      
+from PyQt5 import QtWidgets, QtGui, QtCore
+from PyQt5.QtWidgets import QFileDialog
+import urllib.request
 
 class FileSelector:
     @staticmethod
     def select_file():
-        root = tk.Tk()
-        root.withdraw()
-        file_path = filedialog.askopenfilename(filetypes=[("MIDI Files", "*.mid *.midi")])
+        file_path, _ = QFileDialog.getOpenFileName(None, "Select MIDI File", "", "MIDI Files (*.mid *.midi)")
         return file_path
 
     @staticmethod

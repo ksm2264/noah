@@ -1,11 +1,12 @@
 
+from typing import List
 import mido
 
-def parse_midi(file_path):
+def parse_midi(file_path: str) -> dict:
     """
     Given the path to a MIDI file, extract its track data and return it as a dictionary.
     The dictionary maps track names to a list of note events.
-    Each note event is a tuple of (time, note_number, velocity, duration)
+    Each note event is a tuple of (time, note_number, velocity, duration) 
     """
     midi_file = mido.MidiFile(file_path)
     track_data = {}
