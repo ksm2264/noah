@@ -17,8 +17,8 @@ def write_code(feature_description, files_to_change):
     Given a desired new feature, and files,
     respond with the changed version of each of the files to implement the feature.
     Respond by alternating file names and contents like so:
-    @@@file_nam1e@@@file_content1@@@file_name2@@@file_content_2@@@ etc.
-    Only respond with that format
+    @@@file_name1@@@file_content1@@@file_name2@@@file_content_2@@@ etc.
+    Only respond with that format. Make sure to start and end with a @@@
     '''
     
     files_dict = {}
