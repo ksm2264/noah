@@ -2,7 +2,7 @@ import os
 import subprocess
 import sys
 import uuid
-from bot.test import implement_feature
+from bot.feature import implement_feature
 from dotenv import load_dotenv
 import openai
 
