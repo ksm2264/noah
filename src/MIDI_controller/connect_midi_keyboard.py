@@ -1,15 +1,1 @@
-
-import mido
-
-def connect_usb() -> mido.MidiDevice:
-    """
-    Connects to the MIDI keyboard via USB and returns a MidiDevice object.
-
-    Returns:
-    mido.MidiDevice: An object representing the MIDI keyboard.
-    """
-    midi_devices = mido.get_input_names()
-    for device in midi_devices:
-        if 'MIDI keyboard' in device: 
-            return mido.open_input(device)
-    raise Exception("MIDI keyboard not found, please connect and try again")
+import mido\nimport logging\n\ndef connect_usb() -> mido.MidiDevice:\n    """\n    Connects to the MIDI keyboard via USB and returns a MidiDevice object.\n\n    Returns:\n    mido.MidiDevice: An object representing the MIDI keyboard.\n    """\n    logging.info("Connecting to MIDI keyboard.")\n    midi_devices = mido.get_input_names()\n    for device in midi_devices:\n        if \'MIDI keyboard\' in device: \n            return mido.open_input(device)\n    logging.error("MIDI keyboard not found.")\n    raise Exception("MIDI keyboard not found, please connect and try again")\n'
